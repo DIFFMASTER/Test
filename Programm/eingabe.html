@@ -1,10 +1,11 @@
 <html>
 	<head>
 		<title>
+		<!-- safe dataabase structure -->
 			Struktur einer Datenbank sichern
 		</title>
 		<link rel="stylesheet" type="text/css" href="formate.css">
-		<!-- Weiterleitung zur Eingabe bei Klick auf Botton -->
+		<!-- Forwarding to submission (click on button) -->
 		<script type="text/javascript">
 			function vergleich(){
 				window.location.href='vor_vergleich.php';
@@ -12,23 +13,28 @@
 		</script>
 	</head>
 	<body>
-		<!-- Überschrift -->
+		<!-- Title: -->
 		<header>
+		<!-- safe database structure -->
 			Struktur einer Datenbank sichern
 		</header>
 		<div id="date">
+		<!-- database-login-->
 			Datenbank-Login:
 		</div>
 		<div id="eingabe">
 			<form id="eingabe_form" name="eingabe" method="post" action="filldb.php">
-				<!-- Beschriftung der Inputfelder -->
-				<div id="eingabe_label">
-					<label>Server:</label>					
-					<label>Benutzername:</label>					
+				<!-- Labeling of input fields -->
+				<div id="eingabe_label">				
+					<label>Server:</label>	
+                    <!-- username -->					
+					<label>Benutzername:</label>
+					<!-- password -->
 					<label>Passwort:</label>
+					<!-- database -->
 					<label>Datenbank:</label>				
 				</div>
-				<!-- Inputfelder -->
+				<!-- input fields -->
 				<div id="eingabe_input">
 					<input type="text" placeholder="Server" name="Server">
 					<input type="text" placeholder="Benutzername" name="Name">

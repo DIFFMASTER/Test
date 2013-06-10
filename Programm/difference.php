@@ -1,10 +1,10 @@
 <?php
-	//-------- Variablenübertragung per POST
+	//-------- variabletransfer per POST
 		//Serverdaten
 		$serv = $_POST['server']; 
 		$name = $_POST['name'];
 		$pw = $_POST['pw'];
-		//Start- und Enddatum  - Format: YYYY-MM-DD
+		//Start- and end date - format: YYYY-MM-DD
 		$start = $_POST['start'];
 		$end = $_POST['end'];
 	
@@ -28,7 +28,7 @@
 	//--------MySQL-Connect
 	$Connection = mysql_connect($serv,$name,$pw) or die ("Verbindung fehlgeschlagen");
 	
-	//--------Ermittlung aller Datumseintragungen im angegebenen Zeitraum
+	//--------Calculation of date entries in choosen time period
 	$SQLString =  "use changedb";
 	$Ergebnis = mysql_query($SQLString,$Connection);
 	$SQLString =  "select date_change from difference where date_change between '". $start."' and '".$end."' group by date_change";
@@ -36,17 +36,17 @@
 	$i=0;
 	$rows_new = array();
 	
-	//--------Ermittlung aller Einträge des Datums
+	//--------fetch all etries of that date
 	while($row = mysql_fetch_row($Ergebnis)){
 		$dates[$i] = $row[0];
-		//--------Zwischenspeichern der Daten des älteren Datums
+		//--------buffering of the data of the older date
 		$rows_old = array_merge($rows_new, array());
 		$rows_new = array();
 		$SQLString =  "use changedb";
 		$Ergebnis2 = mysql_query($SQLString,$Connection);
 		$SQLString =  "select table_name, field_name, field_type, field_null, field_key, field_default, field_extra from difference where date_change= '".$dates[$i]."' order by date_change";
 		$Ergebnis2 = mysql_query($SQLString,$Connection);
-		//--------Erzeugung eines mehrdimensionalen Arrays mit den Daten der Sicherung 
+		//--------creation of a multidimensional array with the buffer 
 		while($row = mysql_fetch_array($Ergebnis2)){
 			$rows_new[] = array($row["table_name"]=>array($row["field_name"]=>array( "field_type"=>$row["field_type"],
 						"field_null"=>$row["field_null"],
@@ -56,10 +56,10 @@
 		}
 		$i++;	
 	}
-	//MySQL-Verbindung trennen
+	//MySQL-disconnect
 	mysql_close($Connection);
 	//--------Vergleichprozedur der Daten 
-		//--------Die Arrays werden in Spalten ausgeteilt und mit der PHP-Funktion array_diff auf Unterschiede überprüft
+		//--------distribute arrays to columns and look for differences with buffer (using array_diff)
 	foreach($rows_new as $key => $value){
 		$rows_new_s[$key] = serialize($value);
 	}
@@ -71,11 +71,11 @@
 		$diff[] = unserialize($diff_s[$key]);
 	}
 	
-	//--------Ausgabe--------\\
+	//--------Output--------\\
 	$diff_tables = array();
 	$diff_fields = array();
 	$diff_type = array();
-	//--------Das mehrdimensionale Ergebnisarray wird in eindimensionale Arrays aufgespalten
+	//--------split multidimensional result array in one dimansional arrays
 	for($i=0;$i<count($diff);$i++){
 		$diff_tables = array_merge($diff_tables,array_keys($diff[$i]));
 	}
@@ -98,7 +98,7 @@
 		$diff_extra[$i] = $diff[$i][$diff_tables[$i]][$diff_fields[$i]]['field_extra'];
 	}
 	
-	//--------Die Tabellennamen der alten und neuen Daten werden ermittelt
+	//--------fetch new table names and data
 	$rows_new_tables = array();
 	$rows_old_tables = array();
 	for($i=0;$i<count($rows_new);$i++){
@@ -108,7 +108,7 @@
 		$rows_old_tables = array_merge($rows_old_tables,array_keys($rows_old[$i]));
 	}
 	
-	//--------Überprüfung ob neue Tabellen angelegt wurden (Markierung für spätere Ausgabe)
+	//--------check if new tables were created (and assign for a later readout)
 	for($i=0;$i<count($diff_tables);$i++){
 		if (!(in_array($diff_tables[$i],$rows_new_tables))){
 			$class[$i]=0;	
@@ -131,7 +131,7 @@
 		</header>
 		<div id="date">
 			<?php
-				//--------Ausgabe des Datums
+				//--------display date 
 				echo "Datum:<br>";
 				for($i=0;$i<(count($dates)/2);$i++){
 					echo $dates[$i]." - ".$dates[$i+1];
@@ -141,13 +141,16 @@
 		<div id='anzeige'>
 		<table id="anzeige_tab">
 			<tr>
-				<th>
-					Tabellenname
+				<th> 
+                 <!-- table name -->				
+					Tabellenname   
 				</th>
 				<th>
+				<!-- field name -->
 					Feldname
 				</th>
 				<th>
+				<!-- field type -->
 					Feldtyp
 				</th>
 				<th>
@@ -165,7 +168,7 @@
 			</tr>
 				<?php
 					for($i=0;$i<count($diff);$i++){
-						//--------Ausgabe der geänderten Daten (mit Markierung neuer Tabellen)
+						//--------Emit of the changed data (with table assignments)
 						echo "<tr ><td class='show".$class[$i]."'>".$diff_tables[$i]."</td>
 						<td class='show".$class[$i]."'>".$diff_fields[$i]."</td>
 						<td class='show".$class[$i]."'>".$diff_type[$i]."</td>

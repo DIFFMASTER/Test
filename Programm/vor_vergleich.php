@@ -4,7 +4,7 @@
 	@$pw = $_POST['pw'];
 	if((isset($serv))&&(isset($name))&&(isset($pw))){	
 		$Connection = mysql_connect($serv,$name,$pw) or die ("Verbindung fehlgeschlagen");
-		//--------Ermittlung aller Datumseintragungen im angegebenen Zeitraum
+		//--------fetch all date entries in choosen time period
 		$SQLString =  "use changedb";
 		$Ergebnis = mysql_query($SQLString,$Connection);
 		$SQLString =  "select date_change from difference group by date_change;";
@@ -12,7 +12,7 @@
 		for($i=0;$row = mysql_fetch_array($Ergebnis);$i++){
 			$date[$i] = $row[0];
 		}
-		//MySQL-Verbindung trennen
+		//MySQL-disconnect
 		mysql_close($Connection);
 		$url = 'difference';
 		$val = 'Vergleichen';
@@ -24,11 +24,12 @@
 ?>
 <html>
 	<head>
-		<title>
+		<title>	
+            <!-- compare data -->		
 			Vergleich von Daten
 		</title>
 		<link rel="stylesheet" type="text/css" href="formate.css">
-		<!-- Weiterleitung zur Eingabe bei Klick auf Botton -->
+		<!-- Forwarding to Submission (click on button) -->
 		<script type="text/javascript">
 			function vergleich(){
 				window.location.href='vor_vergleich.php';
@@ -36,21 +37,23 @@
 		</script>
 	</head>
 	<body>
-		<!-- Überschrift -->
+		<!-- Title: -->
 		<header>
+		<!-- compare -->
 			Vergleich
 		</header>
 		<div id="date">
+		<!-- database-login -->
 			Datenbank-Login:
 		</div>
 		<div id="vergleich">
 			<form id="vergleich_form" name="eingabe" method="post" action=<?php echo $url.'.php';?>>
-				<!-- Beschriftung der Inputfelder -->
+				<!-- label input fields -->
 				<div id="vergleich_datum">
 					<input type="text" placeholder="Server" name="server" value='<?php echo $serv;?>'>
 					<input type="text" placeholder="Benutzername" name="name" value='<?php echo $name;?>'>
 					<input type="password" placeholder="Passwort" name="pw" value='<?php echo $pw;?>'>			
-					<!-- Selctboxen zur Auswahl des Start- und Enddatums -->
+					<!-- Selctboxes to choose start and end date -->
 					<select id="datum" name="start">
 						<?php
 							if((isset($serv))&&(isset($name))&&(isset($pw))){	
