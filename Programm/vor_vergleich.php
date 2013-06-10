@@ -1,4 +1,16 @@
 <?php
+//-----------------------------------------------------------------------------------------------------------------------------
+//Short description: compare database entries
+
+//Project: Diffmaster
+
+//Developer: Philipp Schmitt, Philipp Fuchs, Jessica Wifling, Gina Weiland, Alexander Trierweiler, Steve Bone
+
+//Description: 
+//This script compares the database entries of the choosen database in the difference table.
+//It uses a SQL query to do so.
+//-----------------------------------------------------------------------------------------------------------------------------
+
 	@$serv = $_POST['server']; 
 	@$name = $_POST['name'];
 	@$pw = $_POST['pw'];

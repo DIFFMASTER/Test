@@ -1,4 +1,16 @@
 <?php
+//-----------------------------------------------------------------------------------------------------------------------------
+//Short description: safe database changes
+
+//Project: Diffmaster
+
+//Developer: Philipp Schmitt, Philipp Fuchs, Jessica Wifling, Gina Weiland, Alexander Trierweiler, Steve Bone
+
+//Description: 
+//This script saves the database changes of the choosen database in teh difference table.
+//It uses a SQL query to do so.
+//-----------------------------------------------------------------------------------------------------------------------------
+
 //--------Variables of the POST transmission from eingabe.html
 	$serv = $_POST['Server'];
 	$name = $_POST['Name'];

@@ -1,4 +1,16 @@
 <?php
+//-----------------------------------------------------------------------------------------------------------------------------
+//Short description: show database changes
+
+//Project: Diffmaster
+
+//Developer: Philipp Schmitt, Philipp Fuchs, Jessica Wifling, Gina Weiland, Alexander Trierweiler, Steve Bone
+
+//Description: 
+//This script shows the database changes of the choosen database with the difference table saves.
+//It uses a SQL query to do so.
+//-----------------------------------------------------------------------------------------------------------------------------
+
 	//-------- variabletransfer per POST
 		//Serverdaten
 		$serv = $_POST['server']; 
