@@ -1,0 +1,12 @@
+CREATE TABLE `difference` (
+  `id_change` int(10) NOT NULL auto_increment,
+  `date_change` date NOT NULL,
+  `table_name` varchar(256) collate latin1_general_ci NOT NULL,
+  `field_name` varchar(256) collate latin1_general_ci NOT NULL,
+  `field_type` varchar(256) collate latin1_general_ci NOT NULL,
+  `field_null` varchar(8) collate latin1_general_ci NOT NULL,
+  `field_key` varchar(8) collate latin1_general_ci NOT NULL,
+  `field_default` varchar(256) collate latin1_general_ci NOT NULL,
+  `field_extra` varchar(256) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`id_change`)
+) 

@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>
+			Struktur einer Datenbank sichern
+		</title>
+		<link rel="stylesheet" type="text/css" href="formate.css">
+		<!-- Weiterleitung zur Eingabe bei Klick auf Botton -->
+		<script type="text/javascript">
+			function vergleich(){
+				window.location.href='vor_vergleich.php';
+			}
+		</script>
+	</head>
+	<body>
+		<!-- Überschrift -->
+		<header>
+			Struktur einer Datenbank sichern
+		</header>
+		<div id="date">
+			Datenbank-Login:
+		</div>
+		<div id="eingabe">
+			<form id="eingabe_form" name="eingabe" method="post" action="filldb.php">
+				<!-- Beschriftung der Inputfelder -->
+				<div id="eingabe_label">
+					<label>Server:</label>					
+					<label>Benutzername:</label>					
+					<label>Passwort:</label>
+					<label>Datenbank:</label>				
+				</div>
+				<!-- Inputfelder -->
+				<div id="eingabe_input">
+					<input type="text" placeholder="Server" name="Server">
+					<input type="text" placeholder="Benutzername" name="Name">
+					<input type="password" placeholder="Passwort" name="PW">			
+					<input type="text" placeholder="Database" name="DB">
+					<input type="submit" value="Los" name="Los">
+					<input type="button" onClick="vergleich()" value="Vergleich" name="Vergleich">
+				</div>
+			</form>
+		</div>		
+	</body>
+</html>	
+
+

@@ -1,0 +1,112 @@
+/*--------Allgemein--------*/
+body{
+	background-color:  	#B2DFEE;
+}
+header{
+	font-size:60;
+	margin:0 auto;
+	text-shadow:black 0 0 5px, red 3px 3px 1px;
+	width:500px;
+	text-align:center;
+	margin-bottom:20px;
+}
+
+/*--------eingabe.html--------*/
+#eingabe{
+	margin:0 auto;
+	width:300px;
+	border:solid black 3px;
+	padding: 10px;
+	height:170px;
+	-moz-box-shadow:  3px 5px 6px #666;
+	-webkit-box-shadow:  3px 5px 6px #666;
+	box-shadow:  3px 5px 6px #666;
+}
+#eingabe_label{
+	width:149px;
+	font-weight:bold;
+	font-size:18;
+	float:left;
+}
+#eingabe_label label{
+	padding-bottom:5px;
+}
+#eingabe_input{
+	width:150px;
+	float:right;
+}
+#eingabe_input input{
+	width:149px;
+	padding:2px;
+}
+/*--------vor_vergleich.php--------*/
+#vergleich{
+	margin:0 auto;
+	width:200px;
+}
+#vergleich_datum{
+	margin:0 auto;
+	width:200px;
+	border:solid black 3px;
+	padding: 10px;
+	height:170px;
+	-moz-box-shadow:  3px 5px 6px #666;
+	-webkit-box-shadow:  3px 5px 6px #666;
+	box-shadow:  3px 5px 6px #666;
+}
+#vergleich_datum input{
+	width:200px;
+	padding:2px;
+}
+#vergleich_datum select{
+	width:98px;
+	padding:2px;
+}
+
+/*--------vergleich.php--------*/
+#date{
+	font-weight:bold;
+	font-size:20;
+	text-align:center;
+	width:300px;
+	margin: 0 auto;
+	margin-bottom:20px;
+	border: solid black 3px;
+	padding:15px;
+	-moz-box-shadow:  3px 5px 6px #666;
+	-webkit-box-shadow:  3px 5px 6px #666;
+	box-shadow:  3px 5px 6px #666;
+}
+#anzeige{
+	padding:10px;
+	-moz-box-shadow:  3px 5px 6px #666;
+	-webkit-box-shadow:  3px 5px 6px #666;
+	box-shadow:  3px 5px 6px #666;
+	margin-bottom:20px;
+	width:1000px;
+	margin:0 auto;
+	border:solid black 2px;
+}
+#anzeige_tab{
+	border: solid black 2px;
+	text-align:center;
+	width:1000px;
+	margin:0 auto;
+}
+#anzeige th{
+	border: solid black 3px;
+	width:150px;
+	height:25px;
+	font-size:20;
+}
+#anzeige td{
+	width:150px;
+	height:25px;
+	font-size:18;
+}
+.show1{
+	border: solid red 2px;
+}
+.show0{
+	border: solid black 2px;
+}
