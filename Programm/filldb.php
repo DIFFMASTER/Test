@@ -1,20 +1,20 @@
 <?php
-//--------Variablen die Aus dem Formular: eingabe.html übertragen werden
+//--------Variables of the POST transmission from eingabe.html
 	$serv = $_POST['Server'];
 	$name = $_POST['Name'];
 	$pw = $_POST['PW'];
 	$db = $_POST['DB'];
 	
-//MySQL-Verbindung
+//MySQL-connection
 	$Connection = mysql_connect($serv,$name,$pw) or die ("Verbindung fehlgeschlagen");
 	
-//Eingegebene Datenbank und Tabellen werden ermittelt
+//fetch choosen database and tables
 	$SQLStringDB =  "use ".$db.";";
 	$ErgebnisDB = mysql_query($SQLStringDB,$Connection);
 	$SQLStringFelder =  "show tables from ".$db.";";
 	$ErgebnisFelder = mysql_query($SQLStringFelder,$Connection);
 
-//Eingegebene Datenbank wird übergeben, Felder werden übermittelt	
+//get fields of the table in the database	
 	while($tab = mysql_fetch_row($ErgebnisFelder)){
 		$SQLStringDB =  "use ".$db.";";
 		$ErgebnisDB = mysql_query($SQLStringDB,$Connection);
@@ -22,7 +22,7 @@
 		$ErgebnisTabelle = mysql_query($SQLStringTabelle,$Connection);
 
 	
-//Datenbank-Wechsel, Daten werden in Gesamttabelle schreiben	
+//switch database, write data to the table	''difference''
 			while($row = mysql_fetch_row($ErgebnisTabelle)){
 				$SQLStringDB =  "use changedb;";
 				$ErgebnisDB = mysql_query($SQLStringDB,$Connection);
@@ -31,7 +31,7 @@
 			}
 		
 	}	
-//MySQL-Verbindung trennen
+//MySQL-disconnect
 	mysql_close($Connection);
 ?>
 
@@ -40,7 +40,7 @@
 		<title>
 			DB Sicherung
 		</title>
-		<!-- Weiterleitung zur Eingabe bei Klick auf Botton -->
+		<!-- Forwarding to eingabe.html (on click on the button)-->
 		<script type="text/javascript">
 			function erneut(){
 				window.location.href='eingabe.html';
