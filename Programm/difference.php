@@ -4,7 +4,7 @@
 
 //Project: Diffmaster
 
-//Developer: Philipp Schmitt, Philipp Fuchs, Jessica Wifling, Gina Weiland, Alexander Trierweiler, Steve Bone
+//Developer:Stefan Repp, Philipp Schmitt, Philipp Fuchs, Jessica Wifling, Gina Weiland, Alexander Trierweiler, Steve Bone
 
 //Description: 
 //This script shows the database changes of the choosen database with the difference table saves.
